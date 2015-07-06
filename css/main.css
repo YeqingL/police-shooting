@@ -1,1 +1,51 @@
-/* You'll probably want to add some styles here */
+body {
+	background-color: #2D015F;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+	text-align: center;
+	color: white;
+}
+
+h2 {
+	margin-top: 0em;
+}
+
+#intro, #container{
+	margin-top: 50px;
+}
+
+#intro {
+	float: left;
+	width: 30%;
+	margin-left: 10%;
+	margin-right: 5%;
+	background-color: #F5CFF9;
+	padding: 1em;
+}
+
+span {
+	font-style: italic;
+	color: gray;
+}
+
+#container {
+	border: dashed #2D015F 10px;
+}
+
+.legend {
+    line-height: 18px;
+    color: #555;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
