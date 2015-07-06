@@ -1,6 +1,6 @@
-// Function to draw your map
 var map;
 
+// Function to draw your map
 var drawMap = function() {
     // Create map and set viewd
     map = L.map('container');
@@ -9,6 +9,7 @@ var drawMap = function() {
     var layer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png');
     // Add the layer to the map
     layer.addTo(map);
+    // Fetch data
     getData();
 }
 
@@ -25,12 +26,12 @@ var getData = function() {
     dataType:"json"
     })
 }
-
-// Do something creative with the data here!  
+  
 var customBuild = function(data) {
     var ages = [];
     var killed = [];
     var hit = [];
+    // Create circles, use different colors for different ages
     data.map(function(d){
         var circle = new L.circle([d.lat, d.lng], 300, {
             color: getColor(d["Victim's Age"]), 
@@ -40,10 +41,10 @@ var customBuild = function(data) {
                         + "Race: " + d["Race"] + "<br>"
                         + "Summary: " + d["Summary"]);
         ages.push(circle);
-        
-        // Add layers to the map
         ifKilled(d, killed, hit);
     }); 
+
+    // Add layer group to the map
     ages = L.layerGroup(ages);
     killed = L.layerGroup(killed);
     hit = L.layerGroup(hit);
@@ -79,13 +80,16 @@ var getColor = function(data) {
                      '#F7FF00';
 }
 
+// Create two layers showing victims killed and hit on the map
 var ifKilled = function(data, killed, hit) {
+    // Set icon for victim killed
     var skullIcon = L.icon({
         iconUrl: 'js/skull.png',
         iconSize:     [20, 20], // size of the icon
         iconAnchor:   [10, 0], // point of the icon which will correspond to marker's location
     });
 
+    // Set icon for victim hit
     var heartIcon = L.icon({
         iconUrl: 'js/heart.png',
         iconSize:     [20, 20], // size of the icon
